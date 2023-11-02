@@ -1,0 +1,50 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <title>Лучший кликер на планете</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+</head>
+<body>
+    <main class="app">
+        <nav class="nav">
+            Привет, {{ user.username }}
+            <a href="{% url 'logout' %}">Выйти</a>
+        </nav>
+
+        <div class="container">
+            <habibi class="habibi">
+            <div id='coins'>{{core.coins}}</div>
+                </habibi>
+            <h3><button class='button' onclick="call_click()">
+                <span class="button__line button__line--top"></span>
+                <span class="button__line button__line--right"></span>
+                <span class="button__line button__line--left"></span>
+                <span class="button__line button__line--bottom"></span>
+                Нажми меня
+                </button>
+            </a></h3>
+            <navi class="navi">
+            <p>
+            <h3>Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span></h3>
+            </p>
+            </navi>
+        </div>
+
+        <aside class="boosts" id="boosts">
+            <boobs class="boobs">
+            <h3>Бусты</h3>
+            </boobs>
+            <div class="boosts-holder" id="boosts-holder">
+                {% for boost in boosts %}
+                    <button class="boost" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}})">
+                        <p>lvl: <span id="boost_level">{{boost.level}}</span></p>
+                        <p>+<span id="boost_power">{{boost.power}}</span></p>
+                        <p><span id="boost_price">{{boost.price}}</span></p>
+                    </button>
+                {% endfor %}
+            </div>
+        </aside>
+    </main>
+</body>
+</html>
